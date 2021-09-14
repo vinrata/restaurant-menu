@@ -5,8 +5,7 @@ public class MenuItem {
     private String description;
     private String category;
     private Double price = 0.0;
-
-    private Boolean isNew = true;
+    private Boolean isNew;
 
 
 
@@ -44,4 +43,38 @@ public class MenuItem {
 
     public Boolean getIsNew(){return this.isNew;}
     public void setIsNew(boolean isNew){this.isNew = isNew;}
+
+
+    public boolean dateSwitch(Boolean isNew) {
+        this.isNew = true;
+        return this.isNew;
+    }
+
+    @Override
+    public String toString() {
+        String returnString ="";
+        returnString += "Item Name: " + this.name + "\n";
+        returnString += "Item Description: " + this.description + "\n";
+        returnString += "Item Price: " + this.price + "\n";
+        returnString += "Item Category: " + this.category + "\n";
+        returnString += "Item Is New?: " + this.isNew + "\n";
+        return returnString;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if(!(obj instanceof MenuItem)){
+            return false;
+        }
+        MenuItem menuItem = (MenuItem) obj;
+        if(menuItem.name.equals(this.name)
+                && menuItem.description.equals(this.description)
+                && menuItem.price.equals(this.price)
+                && menuItem.category.equals(this.category))
+                return true;
+                else return false;
+
+    }
 }
